@@ -26,7 +26,7 @@ const PatientSchema = new mongoose.Schema(
     healthcare: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "HealthcareProvider",
-    },
+    } ,
 
     goal: {
       type: mongoose.Schema.Types.ObjectId,
@@ -42,11 +42,10 @@ const PatientSchema = new mongoose.Schema(
 );
 
 // FIXED pre-save middleware
-PatientSchema.pre("save", async function(next) {
-  if (!this.isModified("password")) return next();
+PatientSchema.pre("save", async function() {
+  if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  next();
 });
 
 PatientSchema.methods.matchPassword = async function (entered) {
