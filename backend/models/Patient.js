@@ -13,17 +13,17 @@ const PatientSchema = new mongoose.Schema(
     address: { type: String },
 
     blood_group: { type: String },
-    habits: { type: String }, // e.g. "smoking, alcohol, sedentary"
-    diseases: { type: String }, // e.g. "diabetes, hypertension"
+    habits: { type: String },
+    diseases: { type: String },
     symptoms: { type: String },
-    sleep_cycle: { type: String }, // e.g. "6-7 hours, irregular"
+
     weight: { type: Number },
     height: { type: Number },
     bmi: { type: Number },
 
     role: { type: String, default: "patient" },
 
-    assigned_provider: {
+    healthcare: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "HealthcareProvider",
     },
@@ -42,14 +42,13 @@ const PatientSchema = new mongoose.Schema(
 );
 
 // Hash password before save
-PatientSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
+PatientSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  next();
 });
 
-// Compare password method
+// Compare password
 PatientSchema.methods.matchPassword = async function (entered) {
   return bcrypt.compare(entered, this.password);
 };

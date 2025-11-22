@@ -23,19 +23,17 @@ const getMyDashboard = async (req, res) => {
         email: patient.email,
         age: patient.age,
         address: patient.address,
-        blood_group: patient.blood_group,
-        habits: patient.habits,
-        diseases: patient.diseases,
-        symptoms: patient.symptoms,
-        sleep_cycle: patient.sleep_cycle,
+        phone_number: patient.phone_number,
         weight: patient.weight,
         height: patient.height,
         bmi: patient.bmi,
       },
+      healthcare_center: patient.healthcare || null,
       goals: patient.goal || null,
       reminders: patient.reminder || null,
-      assigned_provider: patient.assigned_provider || null,
+      dynamic_reminders: dynamicReminders
     });
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });

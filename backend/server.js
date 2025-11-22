@@ -7,7 +7,8 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const patientRoutes = require("./routes/patientRoutes");
 const providerRoutes = require("./routes/providerRoutes");
-
+const goalRoutes = require("./routes/goalRoutes");
+const reminderRoutes = require("./routes/reminderRoutes");
 const app = express();
 
 // DB
@@ -32,6 +33,8 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/patients", patientRoutes);
 app.use("/api/providers", providerRoutes);
+app.use("/api/patients/goals", goalRoutes);
+app.use("/api/providers/patients/reminders", reminderRoutes);
 
 // Global error fallback
 app.use((err, req, res, next) => {
