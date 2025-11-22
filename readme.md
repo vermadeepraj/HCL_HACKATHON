@@ -1,4 +1,6 @@
 frontend hosted link : https://hcl-hackathon-pi.vercel.app/login
+Backend hosted: https://hcl-hackathon-2.onrender.com , but separately.
+
 
 # 🏥 Healthcare Preventive Care Platform
 
