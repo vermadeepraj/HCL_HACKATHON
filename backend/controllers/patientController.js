@@ -11,7 +11,7 @@ const getMyDashboard = async (req, res) => {
     const patient = await Patient.findById(patientId)
       .populate("goal")
       .populate("reminder")
-      .populate("assigned_provider", "name provider_type specialization");
+      .populate("healthcare", "name provider_type specialization");
 
     if (!patient) {
       return res.status(404).json({ message: "Patient not found" });
@@ -31,7 +31,7 @@ const getMyDashboard = async (req, res) => {
       healthcare_center: patient.healthcare || null,
       goals: patient.goal || null,
       reminders: patient.reminder || null,
-      dynamic_reminders: dynamicReminders
+      // dynamic_reminders: dynamicReminders
     });
 
   } catch (err) {

@@ -1,4 +1,3 @@
-// backend/models/Patient.js
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
@@ -23,6 +22,7 @@ const PatientSchema = new mongoose.Schema(
 
     role: { type: String, default: "patient" },
 
+    // relationship to one healthcare provider
     healthcare: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "HealthcareProvider",
@@ -41,10 +41,12 @@ const PatientSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-PatientSchema.pre("save", async function () {
-  if (!this.isModified("password")) return;
+// FIXED pre-save middleware
+PatientSchema.pre("save", async function(next) {
+  if (!this.isModified("password")) return next();
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
+  next();
 });
 
 PatientSchema.methods.matchPassword = async function (entered) {
