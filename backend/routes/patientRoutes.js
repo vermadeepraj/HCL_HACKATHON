@@ -3,10 +3,9 @@ const express = require("express");
 const {
   getMyDashboard,
   upsertGoals,
-  upsertReminders,
+  upsertReminders
 } = require("../controllers/patientController");
 const { protect } = require("../middleware/authMiddleware");
-
 const router = express.Router();
 
 // All routes here require patient role
