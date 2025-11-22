@@ -8,7 +8,7 @@ A Smart Healthcare System connecting Patients and Healthcare Providers for preve
 
 > **Note:** Frontend and backend are hosted separately and are **not currently connected** in production.
 
-- **Frontend (UI Only):** [https://hcl-hackathon-pi.vercel.app/login](https://hcl-hackathon-pi.vercel.app/login)
+- **Frontend (UI Only):**  https://hcl-hackathon-pi.vercel.app/
 - **Backend API:** [https://hcl-hackathon-2.onrender.com](https://hcl-hackathon-2.onrender.com)
 
 For a **fully functional experience**, please run the project locally following the setup instructions below.
