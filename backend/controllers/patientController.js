@@ -120,60 +120,9 @@ const upsertReminders = async (req, res) => {
   }
 };
 
-const updatePatientProfile = async (req, res) => {
-  try {
-    const patientId = req.user._id;
-
-    const allowedFields = [
-      "name",
-      "phone",
-      "age",
-      "address",
-      "blood_group",
-      "habits",
-      "diseases",
-      "symptoms",
-      "weight",
-      "height"
-    ];
-
-    const updates = {};
-
-    allowedFields.forEach(field => {
-      if (req.body[field] !== undefined) {
-        updates[field] = req.body[field];
-      }
-    });
-
-    // Recalculate BMI if weight/height updated
-    if (updates.weight || updates.height) {
-      const weight = updates.weight ?? req.user.weight;
-      const height = updates.height ?? req.user.height;
-      if (weight && height) {
-        updates.bmi = +(weight / ((height / 100) ** 2)).toFixed(2);
-      }
-    }
-
-    const updatedPatient = await Patient.findByIdAndUpdate(
-      patientId,
-      updates,
-      { new: true }
-    ).select("-password");
-
-    res.json({
-      message: "Profile updated successfully",
-      updatedPatient
-    });
-
-  } catch (err) {
-    console.error("UPDATE PROFILE ERROR:", err);
-    res.status(500).json({ message: "Server error" });
-  }
-};
 
 module.exports = {
   getMyDashboard,
   upsertGoals,
   upsertReminders,
-  updatePatientProfile,
 };
