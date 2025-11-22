@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+🏥 MediCare: Frontend Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+HCLTech Hackathon Submission > A responsive, role-based wellness portal built with React.js.
 
-## Available Scripts
+🚀 Live Demo
 
-In the project directory, you can run:
+View the App: (https://hcl-hackathon-pi.vercel.app/)
 
-### `npm start`
+(Note: This deployment uses mock data/API integration for demonstration purposes)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+📌 Project Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+MediCare is a healthcare wellness portal designed to bridge the gap between patient daily habits and clinical compliance. The frontend focuses on usability, accessibility, and secure data handling through a clean, medical-grade user interface.
 
-### `npm test`
+Key Objectives:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Provide a Patient Dashboard for tracking daily health metrics (steps, water, sleep).
 
-### `npm run build`
+Provide a Provider Dashboard for monitoring patient compliance.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Enforce Privacy First design with mandatory consent flows.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Category
 
-### `npm run eject`
+Technology
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Framework
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+React.js (Create React App)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Routing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+React Router DOM v6
 
-## Learn More
+Styling
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Plain CSS Variables (Medical Blue/Green Theme)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Icons
 
-### Code Splitting
+Lucide React
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+State Mgmt
 
-### Analyzing the Bundle Size
+React Hooks (useState, useEffect, Context)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Deployment
 
-### Making a Progressive Web App
+Vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+✨ UI Features
 
-### Advanced Configuration
+1. 🔐 Role-Based Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Dynamic Login Screen: Switches context between Patient and Provider.
 
-### Deployment
+Consent Checkbox: A mandatory UI element that blocks registration until the user consents to data processing (HIPAA compliance feature).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. 👤 Patient View
 
-### `npm run build` fails to minify
+Wellness Cards: Visual trackers for Steps, Hydration, and Sleep.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Dynamic Inputs: Users can log data directly from the dashboard cards.
+
+Notification Center: Visual alerts for "Urgent" vs "Standard" preventive reminders.
+
+3. 👨‍⚕️ Provider View
+
+Compliance Table: A clean data grid showing assigned patients.
+
+Status Badges: "Traffic Light" system (Green/Red) allows doctors to spot non-compliant patients instantly.
+
+⚙️ Installation & Run Guide
+
+Follow these steps to run the frontend locally.
+
+Prerequisites
+
+Node.js (v14 or higher)
+
+npm (v6 or higher)
+
+Step 1: Clone & Install
+
+git clone [https://github.com/YOUR_USERNAME/health-portal.git](https://github.com/YOUR_USERNAME/health-portal.git)
+cd health-portal
+npm install
+
+
+Step 2: Start the Development Server
+
+npm start
+
+
+The app will open automatically at http://localhost:3000.
+
+If the backend is not running, the app will gracefully degrade to show UI states or handle errors.
+
+📂 Project Structure
+
+src/
+├── app/
+│   └── globals.css       # Global variables & reset
+├── pages/
+│   ├── Login.js          # Auth handling & Consent logic
+│   ├── PatientDashboard.js # Metric tracking UI
+│   ├── ProviderDashboard.js # Compliance monitoring UI
+│   └── Profile.js        # User settings
+├── utils/
+│   └── mockData.js       # Fallback data for UI testing
+└── App.js                # Main Router configuration
+
+
+🔮 Future Improvements
+
+Dark Mode: implementing a high-contrast theme for accessibility.
+
+Chart.js Integration: Replacing simple metric cards with historical trend graphs.
+
+PWA Support: Making the portal installable on mobile devices.
+
+Made with ❤️ for the HCLTech Hackathon
